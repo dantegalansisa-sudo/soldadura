@@ -6,7 +6,6 @@ import Hero from './components/Hero';
 import { About, CtaStrip, Faq, Marquee, Process, Projects, Safety, Services } from './components/Sections';
 import QuoteForm from './components/QuoteForm';
 import Footer, { WhatsAppFloat } from './components/Footer';
-import { CustomCursor } from './components/ui';
 import { QuoteContext } from './quote';
 
 export default function App() {
@@ -27,7 +26,6 @@ export default function App() {
 
   return (
     <QuoteContext.Provider value={{ service, requestQuote }}>
-      <CustomCursor />
       <AnimatePresence>{loading && <Preloader onDone={done} />}</AnimatePresence>
       <motion.div className="scroll-progress" style={{ scaleX: progress }} />
       <Navbar ready={!loading} />

@@ -1,33 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { EASE } from '../data/site';
-
-/* ───────── Custom cursor ───────── */
-export function CustomCursor() {
-  const x = useMotionValue(-100);
-  const y = useMotionValue(-100);
-  const sx = useSpring(x, { damping: 25, stiffness: 250 });
-  const sy = useSpring(y, { damping: 25, stiffness: 250 });
-  const [hover, setHover] = useState(false);
-
-  useEffect(() => {
-    const move = (e: MouseEvent) => {
-      x.set(e.clientX);
-      y.set(e.clientY);
-      const t = e.target as HTMLElement | null;
-      setHover(!!t?.closest('a, button, input, select, textarea, label, .hover-target'));
-    };
-    window.addEventListener('mousemove', move);
-    return () => window.removeEventListener('mousemove', move);
-  }, [x, y]);
-
-  return (
-    <>
-      <motion.div className="cursor-dot" style={{ x, y }} />
-      <motion.div className={`cursor-ring ${hover ? 'cursor--hover' : ''}`} style={{ x: sx, y: sy }} />
-    </>
-  );
-}
 
 /* ───────── Reveal text (word mask) ───────── */
 interface RevealTextProps {
