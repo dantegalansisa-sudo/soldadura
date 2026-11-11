@@ -3,3 +3,4 @@ dist
 _originales
 .vercel
 *.log
+*.tsbuildinfo
